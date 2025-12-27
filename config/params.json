@@ -1,0 +1,50 @@
+{
+  "target": "price",
+  "categorical_features": ["postal_code", "condition_of_the_house", "grade_of_the_house", "number_of_views", "number_of_floors", "waterfront_present"],
+  "numeric_features": ["number_of_bedrooms", "number_of_bathrooms", "living_area", "lot_area", "area_of_the_house_excluding_basement", "area_of_the_basement", "built_year", "renovation_year", "lattitude", "longitude", "living_area_renov", "lot_area_renov", "number_of_schools_nearby", "distance_from_the_airport", "house_age", "years_since_renov"],
+  "test_size": 0.2,
+  "random_state": 42,
+  "models": {
+    "linear": {
+      "type": "LinearRegression",
+      "param_sets": [
+        {}
+      ]
+    },
+    "ridge": {
+      "type": "Ridge",
+      "param_sets": [
+        {"alpha": 1.0},
+        {"alpha": 10.0}
+      ]
+    },
+    "random_forest": {
+      "type": "RandomForestRegressor",
+      "param_sets": [
+        {"n_estimators": 200, "max_depth": 12, "random_state": 42},
+        {"n_estimators": 400, "max_depth": 18, "random_state": 42}
+      ]
+    },
+    "xgb": {
+      "type": "XGBRegressor",
+      "param_sets": [
+        {"n_estimators": 400, "max_depth": 6, "learning_rate": 0.05, "subsample": 0.8, "colsample_bytree": 0.8, "random_state": 42},
+        {"n_estimators": 800, "max_depth": 8, "learning_rate": 0.03, "subsample": 0.9, "colsample_bytree": 0.9, "random_state": 42}
+      ]
+    },
+    "svr": {
+      "type": "SVR",
+      "param_sets": [
+        {"kernel": "rbf", "C": 10.0, "gamma": "scale"},
+        {"kernel": "rbf", "C": 50.0, "gamma": 0.01}
+      ]
+    },
+    "knn": {
+      "type": "KNeighborsRegressor",
+      "param_sets": [
+        {"n_neighbors": 5, "weights": "distance"},
+        {"n_neighbors": 10, "weights": "uniform"}
+      ]
+    }
+  }
+}
