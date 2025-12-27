@@ -1,7 +1,7 @@
 import json
 import os
 
-def load_params(path="/home/vivekp22/Videos/vivek_Code_samples_practice/Boosten_House_pred_Tranformer/config/params.json"):
+def load_params(path="config/params.json"):
     with open(path, "r") as f:
         return json.load(f)
 

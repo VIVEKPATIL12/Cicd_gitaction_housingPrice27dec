@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-RAW_PATH = "/home/vivekp22/Videos/vivek_Code_samples_practice/Boosten_House_pred_Tranformer/data/housing.csv"
+RAW_PATH = "data/housing.csv"
 REPORTS_DIR = "outputs/reports"
 PLOTS_DIR = "outputs/plots"
 CLEAN_PATH = "outputs/cleaned_housing.csv"
