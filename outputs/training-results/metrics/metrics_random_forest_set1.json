@@ -1,0 +1,15 @@
+{
+    "model_key": "random_forest",
+    "model_type": "RandomForestRegressor",
+    "param_set_index": 1,
+    "params": {
+        "n_estimators": 200,
+        "max_depth": 12,
+        "random_state": 42
+    },
+    "metrics": {
+        "MAE": 72150.7721643074,
+        "RMSE": 136800.43794211737,
+        "R2": 0.8671977063607357
+    }
+}

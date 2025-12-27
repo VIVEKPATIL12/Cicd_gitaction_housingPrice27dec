@@ -1,0 +1,11 @@
+{
+    "model_key": "linear",
+    "model_type": "LinearRegression",
+    "param_set_index": 1,
+    "params": {},
+    "metrics": {
+        "MAE": 86472.78589884804,
+        "RMSE": 143287.68331905542,
+        "R2": 0.8543037672168325
+    }
+}

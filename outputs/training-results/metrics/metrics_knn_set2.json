@@ -1,0 +1,14 @@
+{
+    "model_key": "knn",
+    "model_type": "KNeighborsRegressor",
+    "param_set_index": 2,
+    "params": {
+        "n_neighbors": 10,
+        "weights": "uniform"
+    },
+    "metrics": {
+        "MAE": 89815.32168262654,
+        "RMSE": 172765.94486179933,
+        "R2": 0.7881897953827804
+    }
+}

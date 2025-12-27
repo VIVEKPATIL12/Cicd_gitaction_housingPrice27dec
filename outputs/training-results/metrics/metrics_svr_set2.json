@@ -1,0 +1,15 @@
+{
+    "model_key": "svr",
+    "model_type": "SVR",
+    "param_set_index": 2,
+    "params": {
+        "kernel": "rbf",
+        "C": 50.0,
+        "gamma": 0.01
+    },
+    "metrics": {
+        "MAE": 217764.36162404274,
+        "RMSE": 377874.1652938408,
+        "R2": -0.013269574187319888
+    }
+}

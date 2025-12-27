@@ -1,0 +1,18 @@
+{
+    "model_key": "xgb",
+    "model_type": "XGBRegressor",
+    "param_set_index": 2,
+    "params": {
+        "n_estimators": 800,
+        "max_depth": 8,
+        "learning_rate": 0.03,
+        "subsample": 0.9,
+        "colsample_bytree": 0.9,
+        "random_state": 42
+    },
+    "metrics": {
+        "MAE": 61684.953125,
+        "RMSE": 125717.40754565375,
+        "R2": 0.8878442645072937
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "model_key": "ridge",
+    "model_type": "Ridge",
+    "param_set_index": 2,
+    "params": {
+        "alpha": 10.0
+    },
+    "metrics": {
+        "MAE": 88352.48209035538,
+        "RMSE": 144262.57353836097,
+        "R2": 0.8523144681742891
+    }
+}

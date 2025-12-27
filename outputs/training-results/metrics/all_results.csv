@@ -1,0 +1,12 @@
+run_name,model_type,params,MAE,RMSE,R2
+linear_set1,LinearRegression,{},86472.78589884804,143287.68331905542,0.8543037672168325
+ridge_set1,Ridge,{'alpha': 1.0},86607.83782135007,142640.16295104157,0.8556176011888266
+ridge_set2,Ridge,{'alpha': 10.0},88352.48209035538,144262.57353836097,0.8523144681742891
+random_forest_set1,RandomForestRegressor,"{'n_estimators': 200, 'max_depth': 12, 'random_state': 42}",72150.7721643074,136800.43794211737,0.8671977063607357
+random_forest_set2,RandomForestRegressor,"{'n_estimators': 400, 'max_depth': 18, 'random_state': 42}",68970.88205288611,134566.07442647684,0.8715004025785267
+xgb_set1,XGBRegressor,"{'n_estimators': 400, 'max_depth': 6, 'learning_rate': 0.05, 'subsample': 0.8, 'colsample_bytree': 0.8, 'random_state': 42}",62291.1640625,113964.55308559762,0.9078341126441956
+xgb_set2,XGBRegressor,"{'n_estimators': 800, 'max_depth': 8, 'learning_rate': 0.03, 'subsample': 0.9, 'colsample_bytree': 0.9, 'random_state': 42}",61684.953125,125717.40754565375,0.8878442645072937
+svr_set1,SVR,"{'kernel': 'rbf', 'C': 10.0, 'gamma': 'scale'}",226052.093119255,386866.66868987185,-0.06207021122402501
+svr_set2,SVR,"{'kernel': 'rbf', 'C': 50.0, 'gamma': 0.01}",217764.36162404274,377874.1652938408,-0.013269574187319888
+knn_set1,KNeighborsRegressor,"{'n_neighbors': 5, 'weights': 'distance'}",91030.42872772003,175092.06605537035,0.7824477721158672
+knn_set2,KNeighborsRegressor,"{'n_neighbors': 10, 'weights': 'uniform'}",89815.32168262654,172765.94486179933,0.7881897953827804
