@@ -1,0 +1,108 @@
+name: Housing Price ML Pipeline
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "src/**"
+      - "config/**"
+      - ".github/workflows/ml-train.yml"
+      - "data/**"
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs:
+  clean-eda:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas numpy matplotlib seaborn scikit-learn joblib xgboost
+
+      - name: Run cleaning and EDA
+        env:
+          DATA_PATH: data/housing.csv
+        run: |
+          python src/clean_eda.py
+
+      - name: Upload cleaned data and EDA outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: cleaned-and-eda
+          path: |
+            outputs/cleaned_housing.csv
+            outputs/reports/**
+            outputs/plots/**
+
+  train-models:
+    runs-on: ubuntu-latest
+    needs: clean-eda
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas numpy scikit-learn joblib xgboost
+
+      - name: Download cleaned data
+        uses: actions/download-artifact@v4
+        with:
+          name: cleaned-and-eda
+          path: outputs
+
+      - name: Train all models
+        run: |
+          python src/train.py
+
+      - name: Upload training outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: training-results
+          path: |
+            outputs/models/**
+            outputs/metrics/**
+
+  commit-results:
+    runs-on: ubuntu-latest
+    needs: train-models
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: outputs
+
+      - name: Commit and push results
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add outputs/
+          git commit -m "Update: cleaned data, EDA reports, models, and metrics"
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git HEAD:main
